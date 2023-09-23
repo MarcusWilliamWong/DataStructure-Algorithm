@@ -1,0 +1,34 @@
+{// launch.json 用来配置调试和运行任务的，另外要注意MingGW选择GDB，MSVC编译器应选择Windows选项
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(gdb) 启动",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "args": [],
+      "stopAtEntry": false,     //是否在入口函数处断点
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": true,// 这一项控制是否启动外部控制台（独立的黑框）运行程序，默认false表示在集成终端中运行
+      "MIMode": "gdb",
+      "miDebuggerPath": "S:\\Downloads\\mingw64\\bin\\gdb.exe", // 调试器路径，必须与你自己的电脑相符
+      "setupCommands": [
+          {
+              "description": "为 gdb 启用整齐打印",
+              "text": "-enable-pretty-printing",
+              "ignoreFailures": true
+          },
+          {
+              "description":  "将反汇编风格设置为 Intel",
+              "text": "-gdb-set disassembly-flavor intel",
+              "ignoreFailures": true
+          }
+      ]
+    }
+  ]//,
+  //"preLaunchTask": "C/C++: gcc.exe 生成活动文件"  // 调试前的预执行任务，这里的值是tasks.json文件中对应的编译任务，也就是调试前需要先编译，个人喜欢分步操作，先编译，后执行，不忘记编译过程
+}
