@@ -1,13 +1,18 @@
-#include <unordered_map>
+#include <map>
 #include <iostream>
+#include <cstdlib>
 
 int main() {
-	std::unordered_map<int, int> map;
-	std::set<int> s;
+	std::map<int, int> m;
 	for (int i = 0; i < 5; ++i) {
-		s.insert()
+		m.insert(std::make_pair(i, i+1));
 	}
 
+	for (auto& e : m) {
+		std::cout << e.first << " : " << e.second << std::endl;
+	}
+
+	std::system("pause");
 
 	return 0;
 }
